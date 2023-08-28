@@ -59,19 +59,18 @@ const main = async () => {
   
   let component = `
 <template>
-  <div class="component-${name}">
+  <div class="component-${name.toLowerCase()}">
     <!-- templating code goes here. -->
   </div>
 </template>\n
   `;
   
-  let componentScript = `
-<script `;
+  let componentScript = `<script `;
   
   if ( componentApi === 'composition' ) {
     componentScript += `setup `;
   } else {
-    componentScript += ` `;
+    componentScript += ``;
   }
   
   if ( scriptType === 'ts' ) {
@@ -86,10 +85,10 @@ const main = async () => {
   
   switch (styleType) {
     case 'scss':
-      componentStyle += `lang="scss"`;
+      componentStyle += `lang="scss" `;
       break;
     case 'less':
-      componentStyle += `lang="less"`;
+      componentStyle += `lang="less" `;
       break;
     default:
       componentStyle += ``;
@@ -98,6 +97,9 @@ const main = async () => {
   if ( isScoped ) {
     componentStyle += `scoped>`;
   }
+
+  componentStyle += `
+  .component-${name.toLowerCase()} {\n  /* styling code goes here. */  \n}\n`;
   
   componentStyle += `</style>`;
   
