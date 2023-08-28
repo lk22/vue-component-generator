@@ -24,8 +24,8 @@ const main = async () => {
   const componentApi = await select({
     message: 'Component API',
     options: [
-      {value: 'options', label: 'Options API'},
-      {value: 'composition', label: 'Composition API'}
+      {value: 'composition', label: 'Composition API'},
+      {value: 'options', label: 'Options API'}
     ]
   })
   
